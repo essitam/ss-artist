@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
+<style media="screen">
+  html,body{
+    font-family: 'DM Serif Text', serif;
+    background-color: #ffbb00 ;
+  }
+
+  #blob{
+    position: absolute;
+    top:0;
+  }
+  #sid{
+    position: absolute;
+    top:30%;
+    /* text-align: center; */
+    font-size: 100px;
+    margin-left: 26%;
+  }
+  p{
+    font-size: 30px;
+  }
+</style>
+  </head>
+  <body>
+    <div id="blob">    </div>
+    <div id="sid">  Sidney <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Starkman
+      <br>
+      <p>archive &nbsp;&nbsp; cake drop &nbsp;&nbsp; current practice &nbsp;&nbsp; newletter &nbsp;&nbsp; recipes</p>
+    </div>
+    <script type="text/javascript">
+            function setup() {
+            var thiscanvas = createCanvas(windowWidth, windowHeight);
+            thiscanvas.parent('blob');
+            // slider = createSlider(0, 10, 0, 0.1);
+            // slider.value(0.5);
+          }
+
+          var inc = 0.1;
+          var noiseMax = 3;
+          var slider;
+          var phase = 0;
+          var zoff = 0;
+
+          function draw() {
+            // fill(0);
+            ellipse(mouseX,mouseY, 10,10);
+            stroke(219, 140, 196);
+            fill(255, 187, 0);
+            noiseMax = -2;
+            beginShape();
+            for (let a = 0; a <= TWO_PI; a += inc) {
+              let xoff = map(sin(a), -1, 2, 0, noiseMax);
+              let yoff = map(cos(a), -1, 4, 0, noiseMax);
+              let r = map(noise(xoff, yoff, zoff), 0, 1, 1200, 200);
+              let x = r * cos(a);
+              let y = r * sin(a);
+              vertex(x, y);
+            }
+            endShape(CLOSE);
+
+            zoff += 0.01;
+
+            // ellipse(mouseX,mouseY, 10,10);
+            translate(width / 2, height / 2);
+            // stroke(219, 140, 196);
+            // fill(220, 82, 222);
+            // noiseMax = 3;
+            // beginShape();
+            // for (let a = 0; a <= TWO_PI; a += inc) {
+            //   let xoff = map(sin(a), -1, 1, 0, noiseMax);
+            //   let yoff = map(cos(a), -1, 1, 0, noiseMax);
+            //   let r = map(noise(xoff, yoff, zoff), 0, 1, 100, 200);
+            //   let x = r * cos(a);
+            //   let y = r * sin(a);
+            //   vertex(x, y);
+            // }
+            // endShape(CLOSE);
+            //
+            // zoff += 0.01;
+
+            // ellipse(mouseX,mouseY, 10,10);
+            translate(width / 2, height / 2);
+            stroke(219, 140, 196);
+            fill(220, 82, 222);
+            noiseMax = -10;
+            beginShape();
+            for (let a = 0; a <= TWO_PI; a += inc) {
+              let xoff = map(sin(a), -1, 2, 0, noiseMax);
+              let yoff = map(cos(a), -1, 4, 0, noiseMax);
+              let r = map(noise(xoff, yoff, zoff), 0, 1, 1200, 200);
+              let x = r * cos(a);
+              let y = r * sin(a);
+              vertex(x, y);
+            }
+            endShape(CLOSE);
+
+            zoff += 0.01;
+          }
+
+
+    </script>
+
+
+  </body>
+</html>
